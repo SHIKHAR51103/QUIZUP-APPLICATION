@@ -1,1 +1,263 @@
+HTML :
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container quiz-container">
+    <h1 class="text-center">Quiz App</h1>
+    <div id="question-container" class="question-container"></div>
+    <div id="options-container" class="options-container"></div>
+    <button id="submit-button" class="btn btn-success btn-block">Submit</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+CSS : 
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.quiz-container {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.question-container {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.options-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#submit-button {
+  margin-top: 20px;
+}
+
+
+JAVASCRIPT : 
+
+$(document).ready(function() {
+  const questionContainer = $("#question-container");
+  const optionsContainer = $("#options-container");
+  const submitButton = $("#submit-button");
+
+  const questions = [
+    {
+      question: "What is the capital of France?",
+      options: ["Paris", "London", "Rome", "Madrid"],
+      answer: "Paris"
+    },
+    {
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
+      answer: "Mars"
+    },
+    {
+      question: "What is the symbol for the chemical element Oxygen?",
+      options: ["O", "Om", "Ox", "Oy"],
+      answer: "O"
+    },
+    {
+    question: "Which gas is most abundant in Earth's atmosphere?",
+    options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    answer: "Nitrogen"
+  },
+  {
+    question: "Who painted the Mona Lisa?",
+    options: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
+    answer: "Leonardo da Vinci"
+  },
+  {
+    question: "What is the largest mammal?",
+    options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+    answer: "Blue Whale"
+  },
+  
+  // B.Tech Computer Science Questions
+  {
+    question: "What does HTML stand for?",
+    options: ["Hyper Text Markup Language", "High Technical Modern Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],
+    answer: "Hyper Text Markup Language"
+  },
+  {
+    question: "Which programming language is known as the 'mother of all languages'?",
+    options: ["Python", "Java", "C++", "Assembly Language"],
+    answer: "C++"
+  },
+  {
+    question: "What does CPU stand for?",
+    options: ["Central Processing Unit", "Computer Personal Unit", "Central Process Unit", "Computer Processor Unit"],
+    answer: "Central Processing Unit"
+  },
+  {
+    question: "Which planet is known as the 'Red Planet'?",
+    options: ["Venus", "Mars", "Jupiter", "Saturn"],
+    answer: "Mars"
+  },
+  {
+    question: "Which famous scientist developed the theory of relativity?",
+    options: ["Isaac Newton", "Galileo Galilei", "Albert Einstein", "Stephen Hawking"],
+    answer: "Albert Einstein"
+  },
+  {
+    question: "What is the largest organ in the human body?",
+    options: ["Liver", "Skin", "Heart", "Lungs"],
+    answer: "Skin"
+  },
+  
+  // B.Tech Computer Science Questions
+  {
+    question: "What is the purpose of a 'for loop' in programming?",
+    options: ["Drawing shapes", "Performing arithmetic calculations", "Repeating a block of code", "Connecting to the internet"],
+    answer: "Repeating a block of code"
+  },
+  {
+    question: "Which data structure follows the 'Last In, First Out' (LIFO) principle?",
+    options: ["Queue", "Stack", "Array", "Linked List"],
+    answer: "Stack"
+  },
+  {
+    question: "Which programming language is often used for web development and has libraries like React and Angular?",
+    options: ["Java", "Python", "JavaScript", "C#"],
+    answer: "JavaScript"
+  },
+  {
+    question: "Who wrote the play 'Romeo and Juliet'?",
+    options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
+    answer: "William Shakespeare"
+  },
+  {
+    question: "What is the largest ocean on Earth?",
+    options: ["Atlantic Ocean", "Arctic Ocean", "Indian Ocean", "Pacific Ocean"],
+    answer: "Pacific Ocean"
+  },
+  {
+    question: "Which famous leader was known as 'The Father of the Nation'?",
+    options: ["Nelson Mandela", "Abraham Lincoln", "Mahatma Gandhi", "Martin Luther King Jr."],
+    answer: "Mahatma Gandhi"
+  },
+  
+  // B.Tech Computer Science Questions
+  {
+    question: "In object-oriented programming, what is an 'interface'?",
+    options: ["A visual design tool", "A programming language", "A communication protocol", "A contract for methods"],
+    answer: "A contract for methods"
+  },
+  {
+    question: "What is the primary purpose of an 'index' in a database?",
+    options: ["To store images", "To organize data", "To run programs", "To create user interfaces"],
+    answer: "To organize data"
+  },
+  {
+    question: "What does the acronym 'URL' stand for?",
+    options: ["Uniform Resource Locator", "Universal Readable Link", "User Retrieval Link", "Unified Remote Locator"],
+    answer: "Uniform Resource Locator"
+  },
+  {
+    question: "What is the largest mammal?",
+    options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+    answer: "Blue Whale"
+  },
+  {
+    question: "Which famous scientist is known for the theory of evolution by natural selection?",
+    options: ["Isaac Newton", "Marie Curie", "Albert Einstein", "Charles Darwin"],
+    answer: "Charles Darwin"
+  },
+  {
+    question: "Which iconic monument is located in India and considered one of the Seven Wonders of the World?",
+    options: ["Eiffel Tower", "Pyramids of Giza", "Taj Mahal", "Colosseum"],
+    answer: "Taj Mahal"
+  },
+  
+  // B.Tech Computer Science Questions
+  {
+    question: "What does SQL stand for in the context of databases?",
+    options: ["Structured Question Language", "Structured Query Language", "Systematic Query Language", "System Question Language"],
+    answer: "Structured Query Language"
+  },
+  {
+    question: "Which sorting algorithm has an average and worst-case time complexity of O(n log n)?",
+    options: ["Bubble Sort", "Insertion Sort", "Merge Sort", "Selection Sort"],
+    answer: "Merge Sort"
+  },
+  {
+    question: "What is the purpose of a 'try-catch' block in programming?",
+    options: ["Creating loops", "Defining functions", "Handling errors", "Creating arrays"],
+    answer: "Handling errors"
+  }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const currentQuizQuestion = questions[currentQuestion];
+
+    questionContainer.text(currentQuizQuestion.question);
+
+    optionsContainer.empty();
+    currentQuizQuestion.options.forEach((option) => {
+      const label = $(`
+        <label class="d-block">
+          <input type="radio" name="option" value="${option}">
+          ${option}
+        </label>
+      `);
+      optionsContainer.append(label);
+    });
+  }
+
+  function submitAnswer() {
+    const selectedOption = $("input[name='option']:checked");
+
+    if (!selectedOption.length) {
+      return; // No option selected, do nothing
+    }
+
+    const answer = selectedOption.val();
+
+    if (answer === questions[currentQuestion].answer) {
+      score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+    } else {
+      showScore();
+    }
+  }
+
+  function showScore() {
+    questionContainer.text(`Quiz completed. Your score: ${score}/${questions.length}`);
+    optionsContainer.empty();
+    submitButton.remove();
+  }
+
+  submitButton.on("click", submitAnswer);
+
+  loadQuestion();
+});
 
